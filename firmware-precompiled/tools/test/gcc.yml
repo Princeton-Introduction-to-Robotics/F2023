@@ -1,0 +1,89 @@
+---
+compiler:
+  path: gcc
+  source_path:     &source_path 'src/'
+  unit_tests_path: &unit_tests_path 'test/**/'
+  mocks_path:      &mocks_path 'generated-test/mocks/'
+  build_path:      &build_path 'generated-test/build/'
+  options:
+    - '-c'
+    - '-Wall'
+    - '-Wextra'
+    - '-Wunused-parameter'
+    - '-Wmissing-braces'
+    - '-Wno-address'
+    - '-std=c11'
+    - '-pedantic'
+    - '-O0'
+  includes:
+    prefix: '-I'
+    items:
+      - *source_path
+      - *unit_tests_path
+      - *mocks_path
+      - 'vendor/unity/src/'
+      - 'vendor/cmock/src/'
+      - 'vendor/libdw1000/inc/'
+      - 'src/deck/drivers/interface/'
+      - 'src/deck/drivers/src/'
+      - 'src/utils/interface/'
+      - 'src/utils/interface/tdoa/'
+      - 'src/utils/interface/lighthouse/'
+      - 'src/utils/src/'
+      - 'src/utils/src/tdoa/'
+      - 'src/utils/src/lighthouse/'
+      - 'src/lib/FreeRTOS/include/'
+      - 'src/config/'
+      - 'src/drivers/interface/'
+      - 'src/drivers/src/'
+      - 'src/modules/interface/'
+      - 'src/modules/src/'
+      - 'src/platform/'
+      - 'src/lib/FreeRTOS/portable/GCC/ARM_CM4F/'
+      - 'src/hal/interface/'
+      - 'test/testSupport/'
+      - 'vendor/CMSIS/CMSIS/Include/'
+  defines:
+    prefix: '-D'
+    items:
+      - CMOCK
+      - 'UNIT_TEST_MODE'
+      - 'UNITY_SUPPORT_64'
+      - 'HSI48_VALUE="((uint32_t)48000000)"'
+      - 'STM32F072xB'
+      - 'ARM_MATH_CM4'
+      - '__fp16=float'
+  object_files:
+    prefix: '-o'
+    extension: '.o'
+    destination: *build_path
+
+linker:
+  path: gcc
+  options:
+    - '-lm'
+  includes:
+    prefix: '-I'
+  object_files:
+    path: *build_path
+    extension: '.o'
+  bin_files:
+    prefix: '-o'
+    extension: '.exe'
+    destination: *build_path
+
+unsupported:
+  - out_of_memory
+  - unity_64bit_support
+  - callingconv
+
+colour: true
+
+:cmock:
+  :plugins:
+    - :ignore_arg
+    - :ignore
+    - :array
+    - :callback
+  :mock_path: *mocks_path
+  :mock_prefix: mock_
