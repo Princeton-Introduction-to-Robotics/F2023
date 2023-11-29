@@ -37,6 +37,8 @@ The lab setup is similar to the RRT lab, with two main changes:
 - The obstacle locations will not be revealed beforehand. Your drone will have to detect where they are. 
 - There will be a target object (a book) placed on a table at the end of the obstacle course. A portion of your grade will be based on landing near the target object (see below for details on grading).
 
+As with the RRT lab, your drone will start off on the spot marked with "X" on the floor.
+
 You are free to move the obstacles around for testing purposes, but do not remove them from the lab spaces. 
 
 ## Demo Day and Grading
@@ -45,10 +47,10 @@ We will hold a Demo Day for evaluating final projects. This will be held on Dean
 
 Your score on each of the three trials will be based on the following criteria:
 
-1. (80 pts) Distance along the x (i.e., forward) direction your robot traversed before colliding. In particular, the score for a trial will be the fraction of the course your robot successfully traversed before colliding, e.g., (80 pts) * 70/100 if your robot covered 70 percent of the course before colliding ("colliding" is defined as the point at which your robot first touches/hits an obstacle or the ground, or leaves the allowable flying zone marked with tape).
+1. (80 pts) Distance along the x (i.e., forward) direction your robot traversed before colliding. In particular, the score for a trial will be the fraction of the course your robot successfully traversed before colliding, e.g., (80 pts) * 70/100 if your robot covered 70 percent of the course before colliding ("colliding" is defined as the point at which your robot first touches/hits an obstacle or the ground, or the netting).
 2. (20 pts) Landing near the target. The target object will be a book of your choice (that you will bring to the Demo Day). The only restriction on the book is that its length and width should be less than one foot (12 inches); any standard book should satisfy these criteria. The book will be placed by the instructors on the table/stand at the end of the course. The book may be placed "upright" (if you like) to make it easier for the drone to see the book when it is flying. Your goal is to make the drone land on the ground near the target object. If your drone crosses all the obstacles and lands within 15cm of the book (as measured from the closest point on the drone to the closest point on the book in the horizontal direction, i.e., y-direction), you will receive 20 points. If your drone crosses all the obstacles and lands within 30cm of the book in the horizontal direction, you will receive 10 points. No points will be awarded for this portion if your drone fails to cross all the obstacles or lands more than 30 cm away from the book. 
 
-Each of the three trials will be scored based on the two criteria above. Note that the two criteria are not completely independent; reaching the target relies on successful navigation through the obstacle course. However, it is possible that your drone collides with an obstacle/ground (or leaves the allowable flying area marked with tape) and somehow manages to keep going and land successfully near the target. In this case, you will receive full points for landing (assuming this was successful), but will receive points for navigation based on where your robot first experienced a collision or left the flying zone, e.g., (80 pts) * 70/100 if your robot covered 70 percent of the course before first touching/hitting an obstacle/ground or leaving the allowable flying zone.
+Each of the three trials will be scored based on the two criteria above. Note that the two criteria are not completely independent; reaching the target relies on successful navigation through the obstacle course. However, it is possible that your drone collides with an obstacle/ground/netting and somehow manages to keep going and land successfully near the target. In this case, you will receive full points for landing (assuming this was successful), but will receive points for navigation based on where your robot first experienced a collision or left the flying zone, e.g., (80 pts) * 70/100 if your robot covered 70 percent of the course before first touching/hitting an obstacle/ground or leaving the allowable flying zone.
 
 **Your total score will be the average of the two best scores from the three trials.** The rationale for this is to evaluate the reliability of your system. Thus, **robustness is the main feature to strive for** in this project (as it has been throughout the course!).
 
@@ -56,7 +58,7 @@ Each of the three trials will be scored based on the two criteria above. Note th
 
 ### Identifying the target
 
-For identifying the target (book), you can use the pretrained neural networks you used in Assignment 9 (e.g., detecting a person if you print out a cover for your book). You can also use the color of the book for detection.
+For identifying the target (book), you can use the pretrained neural networks you used in Assignment 8 (e.g., detecting a person if you print out a cover for your book). You can also use the color of the book for detection.
 
 ### Obstacle avoidance and navigation
 
